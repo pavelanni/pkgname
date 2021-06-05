@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"pkgname"
+
+	"github.com/pavelanni/pkgname"
 )
 
 var pkgList = []string{
