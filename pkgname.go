@@ -1,3 +1,5 @@
+// Package pkgname provides functions to parse Linux package names
+// in RPM and Debian formats.
 package pkgname
 
 import (
@@ -9,6 +11,10 @@ type Pkg struct {
 	Name, Version, Release, Arch, Type string
 }
 
+// Parse parses the package name passed as a string
+// and returns a Pkg structure that includes package's
+// Name, Version, Release (for RPM), Arch, and Type (can be rpm or deb).
+// It calls ParseRpm or ParseDeb depending on the package type.
 func Parse(pname string) (Pkg, error) {
 	var p Pkg
 
@@ -30,6 +36,9 @@ func Parse(pname string) (Pkg, error) {
 
 }
 
+// ParseRpm parses the RPM package name passed as a string
+// and returns a Pkg structure that includes package's
+// Name, Version, Release, Arch, and Type (which is rpm in this case).
 func ParseRpm(pname string) (Pkg, error) {
 	var p Pkg
 
@@ -70,6 +79,9 @@ func ParseRpm(pname string) (Pkg, error) {
 	return p, nil
 }
 
+// ParseDeb parses the RPM package name passed as a string
+// and returns a Pkg structure that includes package's
+// Name, Version, Release (which is empty for deb) Arch, and Type (which is deb in this case).
 func ParseDeb(pname string) (Pkg, error) {
 	var p Pkg
 

@@ -1,8 +1,9 @@
 package pkgname_test
 
 import (
-	"pkgname"
 	"testing"
+
+	"github.com/pavelanni/pkgname"
 )
 
 func TestEmptyString(t *testing.T) {
