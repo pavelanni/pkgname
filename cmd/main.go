@@ -7,6 +7,7 @@ import (
 )
 
 var pkgList = []string{
+	"dnf-plugin-spacewalk-2.8.5-11.module+el8.1.0+3455+3ddf2832.noarch.rpm",
 	"pt-sans-fonts-20141121-18.fc33.noarch.rpm",
 	"python3-canberra-0-0.25.git88c53cd.fc33.noarch.rpm",
 	"python3-pycurl-7.43.0.5-6.fc33.x86_64.rpm",
