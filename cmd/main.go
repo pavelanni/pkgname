@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/pavelanni/pkgname"
@@ -44,12 +43,10 @@ func main() {
 	// This is to test if every package name has the release part
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
-		if p, err := pkgname.Parse(scanner.Text()); err != nil {
-			fmt.Println(scanner.Text(), len(p.Release))
+		line := scanner.Text()
+		p, _ := pkgname.Parse(line)
+		if p.Release == "" {
+			fmt.Println(line, p)
 		}
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Println(err)
 	}
 }
