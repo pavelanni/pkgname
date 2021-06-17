@@ -175,8 +175,7 @@ func TestValidName(t *testing.T) {
 	got, goterr := pkgname.ParseRpm("squashfs-tools-4.4-2.20200513gitc570c61.fc33.x86_64.rpm")
 	want := pkgname.Pkg{
 		Name:    "squashfs-tools",
-		Version: "4.4",
-		Release: "2.20200513gitc570c61.fc33",
+		Version: "4.4-2.20200513gitc570c61.fc33",
 		Arch:    "x86_64",
 		Type:    "rpm",
 	}
@@ -259,7 +258,6 @@ func TestValidNameDeb(t *testing.T) {
 	want := pkgname.Pkg{
 		Name:    "gcc-10-base",
 		Version: "10.2.0-5ubuntu1~20.04",
-		Release: "",
 		Arch:    "amd64",
 		Type:    "deb",
 	}

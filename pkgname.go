@@ -8,7 +8,7 @@ import (
 )
 
 type Pkg struct {
-	Name, Version, Release, Arch, Type string
+	Name, Version, Arch, Type string
 }
 
 // Parse parses the package name passed as a string
@@ -67,13 +67,13 @@ func ParseRpm(pname string) (Pkg, error) {
 	if lastSep == -1 || lastSep == 0 { // "rel.arch.rpm" no dash
 		return Pkg{}, errors.New("no version part in the package name")
 	}
-	p.Release = pname[lastSep+1:]
+	release := pname[lastSep+1:]
 	pname = pname[:lastSep]
 	lastSep = strings.LastIndexByte(pname, '-')
 	if lastSep == -1 || lastSep == 0 {
 		return Pkg{}, errors.New("no name part in the package name")
 	}
-	p.Version = pname[lastSep+1:]
+	p.Version = pname[lastSep+1:] + "-" + release
 	p.Name = pname[:lastSep]
 
 	return p, nil
@@ -111,7 +111,6 @@ func ParseDeb(pname string) (Pkg, error) {
 		return Pkg{}, errors.New("no name part in the package name")
 	}
 	p.Version = pname[lastSep+1:]
-	p.Release = ""
 	p.Name = pname[:lastSep]
 
 	return p, nil
